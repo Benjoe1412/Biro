@@ -15,7 +15,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Utazas.cpp">
+    <ClCompile Include="Utazás.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

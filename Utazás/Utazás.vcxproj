@@ -21,8 +21,8 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{c82845a0-0b41-4666-ab3b-b39bb3a51912}</ProjectGuid>
-    <RootNamespace>Utazas</RootNamespace>
+    <ProjectGuid>{a837f4b2-ba66-4743-98a0-e589a5615095}</ProjectGuid>
+    <RootNamespace>Utazás</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -139,7 +139,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Utazas.cpp" />
+    <ClCompile Include="Utazás.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
