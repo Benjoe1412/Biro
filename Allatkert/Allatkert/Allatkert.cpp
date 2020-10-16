@@ -3,7 +3,7 @@
 
 #include <iostream>
 using namespace std;
-
+//FÉLKÉSZ ÁLLAPOTBAN VAN
 int main()
 {
     const int matrixSize=102;
