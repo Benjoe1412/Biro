@@ -27,7 +27,7 @@ int main()
         }
     }
     cout << highestDistanceIndex << endl;
-    int highestPriceUnderThousand = 0;
+    int highestPriceUnderThousand = -1;
     int highestPriceUnderThousandIndex = 0;
     for (int i = 1; i <= numberOfCities; i++)
     {
