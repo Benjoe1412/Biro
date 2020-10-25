@@ -42,10 +42,10 @@ int main()
             maxiZooIndex = i;
         }
     }
-    cout << maxiZooIndex << endl;
+    cout <<"#"<<endl << maxiZooIndex << endl;
     //legkevesebb állatkertben előforduló állatfaj kiválsztása minimumkiválasztással
     //állatkertek kiválogatása kiválogatással
-    int rareZoos[matrixSize];//ebben tároljuk az állatkertek listáját
+    //int rareZoos[matrixSize];//ebben tároljuk az állatkertek listáját
     int rarestIndex;
     
     int rarestCount = INT16_MAX;
@@ -62,7 +62,7 @@ int main()
             rarestIndex = i;
         }
     }
-    cout << rarestCount << endl;
+    cout <<"#"<<endl << rarestCount << endl;
     for (int i = 1; i <= numberOfSpecies; i++)
     {
         int zooCountPerSpecies = 0;
@@ -77,22 +77,79 @@ int main()
     }
     cout << endl;
     //minden fajtából legalább 2-t tartó állatkertek sorszáma
-    //kiválogatásba ágyazott eldöntés
-    //ELLENŐRIZNI KELL HOGY NEM ÜRES-E AZ A KURVA ÁLLATKERT
+    //kiválogatásba ágyazott eldöntés, lehet üres is az állatkert
+    int pairZoosIndex[matrixSize];
+    int numberOfPairedZoos = 0;
     for (int i = 1; i <= numberOfZoos; i++)
     {
-        int j = 1;
-        
-        bool 
-        if (j == numberOfSpecies + 1) cout << i << " ";
-    }
-    for (int i = 1; i <= numberOfZoos; i++)
-    {
+        bool empty = false;
+        bool everyAnimalHasAFriend = true;
         for (int j = 1; j <= numberOfSpecies; j++)
         {
-            cout << zooMatrix[i][j];
+            //if (empty && zooMatrix[i][j] > 0) empty = false;
+            if (everyAnimalHasAFriend && zooMatrix[i][j] == 1) everyAnimalHasAFriend = false;
         }
-        cout << endl;
+        if (!empty && everyAnimalHasAFriend)
+        {
+            numberOfPairedZoos++;
+            pairZoosIndex[numberOfPairedZoos] = i;
+        }
+
+    }
+    cout <<"#"<<endl<< numberOfPairedZoos<<endl;
+    //for (int i = 1; i <= numberOfPairedZoos; i++) cout << pairZoosIndex[i] << " ";
+    int noCommonAnimalZooIndexA, noCommonAnimalZooIndexB;
+    bool bingo = false;
+    int i = 1;
+    while (!bingo && i <= numberOfZoos)
+    {
+        int j = i+1;
+        while (!bingo && j <= numberOfZoos)
+        {
+            int k = 1;
+            while (k<=numberOfSpecies && (zooMatrix[i][k]==0 || zooMatrix[j][k]==0 ))
+            {
+                k++;
+            }
+            if (k > numberOfSpecies)
+            {
+                bingo = true;
+                noCommonAnimalZooIndexA = i;
+                noCommonAnimalZooIndexB = j;
+            }
+            
+            j++;
+        }
+        i++;
+    }
+    cout << "#" << endl;
+    if (!bingo) cout << "-1";
+    else cout << noCommonAnimalZooIndexA << " " << noCommonAnimalZooIndexB;
+    int superZooIndex[matrixSize];
+    int superZooCount=0;
+    for (int i = 1; i <= numberOfZoos; i++)
+    {
+        bool empty = true;
+        bool itIsASuperZoo = true;
+        for (int j = 1; j <= numberOfSpecies; j++)
+        {
+            if (empty && zooMatrix[i][j] > 0) empty = false;
+            for (int k = 1; k <= numberOfZoos; k++)
+            {
+                if (zooMatrix [i][j]>0 && zooMatrix[i][j] <= zooMatrix[k][j] && i != k) itIsASuperZoo = false;
+            }
+        }
+        if (itIsASuperZoo)
+        {
+            superZooCount++;
+            superZooIndex[superZooCount] = i;
+        }
+    }
+    cout <<endl<< "#";
+    cout <<endl<< superZooCount << endl;
+    for (int i = 1; i <= superZooCount; i++)
+    {
+        cout << superZooIndex[i] << " ";
     }
 }
 
